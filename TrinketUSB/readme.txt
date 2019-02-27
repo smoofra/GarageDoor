@@ -1,15 +1,7 @@
-TrinketKeyboard is a part of Adafruit's Trinket/Gemma USB HID Arduino Library
+This code is adapted from TrinketKeyboard, Adafruit's Trinket/Gemma USB HID
+Library.
 
-TrinketKeyboard allows the user to implement a simple USB keyboard inside the Arduino environment
-
-Please see TrinketKeyboard.h for usage documentation, an example is also included
-
-TrinketKeyboard uses V-USB (http://www.obdev.at/products/vusb/) to implement USB with a bitbang technique. See the folder "usbdrv" for V-USB files.
-
-Adafruit's Trinket and Gemma can do almost anything that V-USB can do, including USB mouse, keyboards, joysticks, gamepads, MIDI devices, and much more (including custom devices that do not fit any existing category).
-
-Copyright (c) 2013 Adafruit Industries
-All rights reserved.
+original: https://github.com/adafruit/Adafruit-Trinket-USB/tree/master/TrinketKeyboard
 
 TrinketKeyboard is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as
