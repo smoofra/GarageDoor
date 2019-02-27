@@ -16,13 +16,13 @@ void loop()
 {
   TrinketKeyboard.poll();
 
-  long long now = millis();
-  if (now - lastTime > 2000) { 
-    TrinketKeyboard.print("trinket");
-    lastTime = now;
-    digitalWrite(LED, HIGH); 
-  }
-  else if (now - lastTime > 300) { 
-    digitalWrite(LED, LOW); 
-  }
+//  long long now = millis();
+//  if (now - lastTime > 2000) { 
+//    //TrinketKeyboard.print("trinket");
+//    lastTime = now;
+//    digitalWrite(LED, HIGH); 
+//  }
+//  else if (now - lastTime > 300) { 
+//    digitalWrite(LED, LOW); 
+//  }
 }
