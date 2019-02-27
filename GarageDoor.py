@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 
 if sys.platform == "darwin":
     os.environ['DYLD_LIBRARY_PATH'] = os.environ.get('DYLD_LIBRARY_PATH', '') + ':/data/homebrew/lib'
@@ -21,12 +22,18 @@ if ( dev is None or
     
 dev.set_configuration()
 print(dev)
-#dev.write(0x81, b'x')
+print("device found")    
 
-dev.ctrl_transfer(0xc0, 0, 0, 0, 'x')
+print("on"); 
+dev.ctrl_transfer(0x40, 0, 0, 0, b'1')
+
+time.sleep(2)
+
+print("off"); 
+dev.ctrl_transfer(0x40, 0, 0, 0, b'0')
 
      
-print("device found")    
+
 
 
 
