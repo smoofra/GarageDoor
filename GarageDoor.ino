@@ -1,9 +1,28 @@
-void setup() {
-  // put your setup code here, to run once:
+#include <TrinketUSB.h>
 
+long long lastTime = 0; 
+
+#define LED 1
+
+void setup()
+{
+  // start USB stuff
+  TrinketKeyboard.begin();
+  lastTime = millis();
+  pinMode(LED, OUTPUT);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
+  TrinketKeyboard.poll();
 
+  long long now = millis();
+  if (now - lastTime > 2000) { 
+    TrinketKeyboard.print("trinket");
+    lastTime = now;
+    digitalWrite(LED, HIGH); 
+  }
+  else if (now - lastTime > 300) { 
+    digitalWrite(LED, LOW); 
+  }
 }
