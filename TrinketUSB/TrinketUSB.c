@@ -21,7 +21,7 @@ License along with TrinketKeyboard. If not, see
 */
 
 #include "cmdline_defs.h"
-#include "TrinketKeyboardC.h"
+#include "TrinketUSB.h"
 #include "usbconfig.h"
 #include "usbdrv/usbdrv.h"
 #include <avr/pgmspace.h>
