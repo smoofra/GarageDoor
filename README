@@ -1,1 +1,8 @@
 This is a USB garage door opener for the Adafruit Trinket board.
+
+
+board = Adafruit Trinket (ATtiny85 @ 16 Mhz)
+programmer = USBTinyISP
+
+Programming works a lot better through a USB hub than plugged directly into my
+mac.
