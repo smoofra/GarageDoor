@@ -32,12 +32,6 @@ License along with TrinketKeyboard. If not, see
 
 #include "Arduino.h"
 
-uint8_t report_buffer[8];
-char usb_hasCommed = 0;
-uint8_t idle_rate = 500 / 4;  // see HID1_11.pdf sect 7.2.4
-uint8_t protocol_version = 0; // see HID1_11.pdf sect 7.2.6
-uint8_t led_state = 0; // caps/num/scroll lock LEDs
-
 void usbBegin()
 {
 	cli();
@@ -61,29 +55,11 @@ void usbPollWrapper()
 	usbPoll();
 }
 
-void usbReportSend()
-{
-	// perform usb background tasks until the report can be sent, then send it
-	while (1)
-	{
-		usbPoll(); // this needs to be called at least once every 10 ms
-		if (usbInterruptIsReady())
-		{
-			usbSetInterrupt((uint8_t*)report_buffer, 8); // send
-			break;
-
-			// see http://vusb.wikidot.com/driver-api
-		}
-	}
-}
-
 
 // see http://vusb.wikidot.com/driver-api
 // constants are found in usbdrv.h
 usbMsgLen_t usbFunctionSetup(uint8_t data[8])
 {
-	usb_hasCommed = 1;
-
 	// see HID1_11.pdf sect 7.2 and http://vusb.wikidot.com/driver-api
 	usbRequest_t *rq = (void *)data;
     
