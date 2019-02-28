@@ -9,7 +9,7 @@ void setup()
   usbBegin();
   pinMode(LED, OUTPUT);
 
-  for (int i = 0; i < 3; i++) { 
+  for (int i = 0; i < 2; i++) { 
     digitalWrite(LED, HIGH);
     delay(300);
     digitalWrite(LED, LOW);
@@ -20,4 +20,5 @@ void setup()
 void loop()
 {
   usbPollWrapper();
+  digitalWrite(LED, usbLEDState);
 }

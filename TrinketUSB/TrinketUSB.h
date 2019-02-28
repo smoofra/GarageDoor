@@ -19,8 +19,8 @@ License along with TrinketKeyboard. If not, see
 <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _TRINKETKEYBOARDC_H_
-#define _TRINKETKEYBOARDC_H_
+#ifndef _TRINKETUSB_H_
+#define _TRINKETUSB_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,13 +28,10 @@ extern "C" {
 
 #include <stdint.h>
 
-extern char usb_hasCommed;
-extern uint8_t led_state;
-extern uint8_t report_buffer[8];
+extern uint8_t usbLEDState;
 
 void usbBegin();
 void usbPollWrapper();
-void usbReportSend();
 
 #ifdef __cplusplus
 }

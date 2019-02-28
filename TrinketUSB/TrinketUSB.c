@@ -30,7 +30,7 @@ License along with TrinketKeyboard. If not, see
 #include <util/delay.h>
 #include <stdint.h>
 
-#include "Arduino.h"
+uint8_t usbLEDState = 0; 
 
 void usbBegin()
 {
@@ -62,9 +62,6 @@ usbMsgLen_t usbFunctionSetup(uint8_t data[8])
 {
 	// see HID1_11.pdf sect 7.2 and http://vusb.wikidot.com/driver-api
 	usbRequest_t *rq = (void *)data;
-    
-    //digitalWrite(1, HIGH);     
-
     return USB_NO_MSG; 
 }
 
@@ -73,10 +70,10 @@ usbMsgLen_t usbFunctionWrite(uint8_t * data, uchar len)
 {
     if (len) {
         if (data[0] == '1') {
-            digitalWrite(1, HIGH);
+            usbLEDState = 1; 
         }
         if (data[0] == '0') {
-            digitalWrite(1, LOW);
+            usbLEDState = 0; 
         }
     }
     return len;
