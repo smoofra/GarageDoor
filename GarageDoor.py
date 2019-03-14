@@ -3,6 +3,15 @@
 import os
 import sys
 import time
+import argparse
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('--click', action='store_true')
+parser.add_argument('--verbose', '-v', action='store_true')
+args = parser.parse_args()
+
+if not args.click:
+    parser.error("huh?")
 
 if sys.platform == "darwin":
     os.environ['DYLD_LIBRARY_PATH'] = os.environ.get('DYLD_LIBRARY_PATH', '') + ':/data/homebrew/lib'
@@ -21,21 +30,19 @@ if ( dev is None or
 
     
 dev.set_configuration()
-print(dev)
-print("device found")    
+if args.verbose:
+    print(dev)
+    print("device found")
+    print("on");
 
-print("on"); 
 dev.ctrl_transfer(0x40, 0, 0, 0, b'1')
 
-time.sleep(2)
+time.sleep(1)
 
-print("off"); 
+if args.verbose:
+    print("off");
+
 dev.ctrl_transfer(0x40, 0, 0, 0, b'0')
 
-     
-
-
-
-
-
+print("clicked")
 

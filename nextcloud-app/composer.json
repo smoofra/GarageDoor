@@ -1,0 +1,15 @@
+{
+    "name": "Garage Door",
+    "description": "a garage door opener",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Lawrence D&#39;Anna"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}

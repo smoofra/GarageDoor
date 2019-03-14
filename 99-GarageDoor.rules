@@ -1,0 +1,12 @@
+#
+# Linux Udev Configuration
+#
+# put this in: /etc/udev/rules.d/99-GarageDoor.rules
+# then run: udevadm control --reload-rules
+# then plug in the device.   All users on the system will now be
+# allowed to access the device, not just root.
+#
+# see: https://askubuntu.com/questions/978552/how-to-make-libusb-work-as-non-root/980887#980887
+#
+
+SUBSYSTEM=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="05dc", MODE="0666"
