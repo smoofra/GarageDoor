@@ -1,6 +1,13 @@
-#hello {
-	color: red;
+#div_status {
+	//border:1px solid magenta;
+
 }
-button {
-	padding: 100px;
+#div_click {
+	//border:1px solid yellow;
+}
+#app-content #app-content-wrapper {
+	flex-direction: column;
+}
+button.click {
+	padding: 80px;
 }

@@ -1,0 +1,52 @@
+#!/usr/bin/python
+
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import urlparse
+import datetime
+
+import RPi.GPIO as GPIO
+
+PIN = 21
+
+class Handler(BaseHTTPRequestHandler):
+
+    def _do_headers(self):
+        parsed_url = urlparse.urlparse(self.path)
+        if parsed_url.path == "/garagedoor":
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain')
+            ok = True
+        else:
+            self.send_response(404)
+            ok = False
+        self.end_headers()
+        return ok
+
+    def do_GET(self):
+        ok = self._do_headers()
+        if not ok:
+            return
+
+        if GPIO.input(PIN):
+            self.wfile.write("open")
+        else:
+            self.wfile.write("closed")
+
+        self.wfile.write(" -- ")
+        self.wfile.write(datetime.datetime.now().strftime('%I:%M:%S %p'))
+        self.wfile.write("\n")
+
+    def do_HEAD(self):
+        self._do_headers()
+
+
+def main():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+    server = HTTPServer(('', 80), Handler)
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()
